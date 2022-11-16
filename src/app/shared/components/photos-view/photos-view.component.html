@@ -1,0 +1,23 @@
+<ng-container *ngIf="photo; else emptyList">
+
+  <mat-card >
+    <img mat-card-image
+         [src]="baseUrl + '/id/' + photo.id + '/600'"
+         [alt]="'Random Photo #' + photo.id">
+    <mat-card-actions align="end">
+      <button
+        (click)="onRemoveFavoriteClicked(photo)"
+        mat-button>Remove from favorites</button>
+    </mat-card-actions>
+  </mat-card>
+
+</ng-container>
+<ng-template
+  #emptyList
+>
+  <div class="photos-view-not-found">
+    <div class="photos-view-not-found__text">
+      Photo not found
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,38 @@
+<div
+  class="photos-list"
+  *ngIf="photos.length > 0; else emptyList">
+  <mat-grid-list cols="3" >
+    <mat-grid-tile
+
+      *ngFor="let photo of photos; trackBy:trackById"
+    >
+      <img
+          (click)="onImageClick(photo)"
+          [src]="baseUrl + '/id/' + photo.id + '/400'"
+          [alt]="'Random Photo #' + photo.id">
+      <mat-grid-tile-footer
+        class="photos-list__tile-footer"
+      >
+        <button mat-icon-button type="button">
+          <mat-icon
+            (click)="onFavoriteClick(photo)"
+            [fontIcon]="'star_outline'"
+            color="accent"
+            aria-hidden="false"
+          ></mat-icon>
+
+        </button>
+      </mat-grid-tile-footer>
+
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+<ng-template
+  #emptyList
+>
+  <div class="photos-list-empty">
+    <div class="photos-list-empty__text">
+      List is empty
+    </div>
+  </div>
+</ng-template>

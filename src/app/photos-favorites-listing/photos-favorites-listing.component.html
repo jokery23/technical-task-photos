@@ -1,0 +1,12 @@
+<ng-container
+  *ngIf="(photoFavorites$ | async) as photoFavorites"
+>
+
+  <app-photos-list
+    (imageClicked)="openDetails($event)"
+    (favoriteClicked)="toggleFavorite($event)"
+    [photos]="photoFavorites"
+  ></app-photos-list>
+
+</ng-container>
+

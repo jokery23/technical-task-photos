@@ -1,0 +1,14 @@
+<ng-container
+  *ngIf="(photos$ | async) as photos"
+>
+
+  <app-infinite-scroll
+    (scroll)="onScroll($event)"
+  >
+    <app-photos-list
+      (favoriteClicked)="toggleFavorite($event)"
+      [photos]="photos"
+    ></app-photos-list>
+  </app-infinite-scroll>
+
+</ng-container>

@@ -1,0 +1,10 @@
+<ng-container
+  *ngIf="(photo$ | async) as photo"
+>
+  <app-photos-view
+    [photo]="photo"
+    (removeFavoriteClicked)="removeFavorite($event)"
+  >
+  </app-photos-view>
+</ng-container>
+

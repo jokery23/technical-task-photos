@@ -1,0 +1,11 @@
+.photos-view-not-found {
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+
+  &__text {
+    font-weight: 600;
+  }
+}

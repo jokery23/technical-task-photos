@@ -1,0 +1,30 @@
+<section class="app-wrapper">
+  <header class="app-header">
+    <mat-toolbar>
+      <mat-toolbar-row>
+        <nav class="app-header__nav">
+          <a
+            mat-button
+            [routerLinkActive]="'app-header__nav--active'"
+            [routerLinkActiveOptions]="{ exact: true }"
+            [routerLink]="['/']">
+            Photos
+          </a>
+          <a
+            mat-button
+            [routerLinkActive]="'app-header__nav--active'"
+            [routerLink]="['/favorites']">
+            Favorites
+          </a>
+        </nav>
+      </mat-toolbar-row>
+
+    </mat-toolbar>
+  </header>
+  <main class="app-main">
+    <div class="app-content">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</section>
+
