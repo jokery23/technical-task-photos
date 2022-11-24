@@ -37,7 +37,6 @@ export class PhotosFavoritesListingComponent implements OnInit, OnDestroy {
         take(1)
       )
       .subscribe(photoFavorites => {
-        console.log('getFavorites count: ', photoFavorites.length);
         this.photoFavorites$.next(photoFavorites);
     })
   }

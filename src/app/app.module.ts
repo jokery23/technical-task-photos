@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import {CoreModule} from "@app/core/core.module";
 import {SharedModule} from "@app/shared/shared.module";
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -17,6 +20,8 @@ import { StoreModule } from '@ngrx/store';
     SharedModule,
     AppRoutingModule,
     StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
 
   ],
   providers: [],

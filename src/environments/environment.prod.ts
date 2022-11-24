@@ -2,5 +2,5 @@ import EnvironmentInterface from "./environment.interface";
 
 export const environment: EnvironmentInterface = {
   production: true,
-  apiUrl: '',
+  apiUrl: 'https://picsum.photos',
 };

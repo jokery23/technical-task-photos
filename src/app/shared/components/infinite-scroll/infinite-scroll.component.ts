@@ -17,15 +17,19 @@ import {
 })
 export class InfiniteScrollComponent implements OnInit, OnDestroy, AfterViewInit {
 
-  @Output() scroll = new EventEmitter();
+  @Output() scrolled = new EventEmitter();
   @ViewChild('spinner') spinner: ElementRef<HTMLElement> | undefined;
 
   private observer: IntersectionObserver | undefined;
 
-  constructor() { }
+  constructor(private host: ElementRef) { }
 
   ngOnInit() {
 
+  }
+
+  get element() {
+    return this.host.nativeElement;
   }
 
   ngAfterViewInit() {
@@ -38,14 +42,14 @@ export class InfiniteScrollComponent implements OnInit, OnDestroy, AfterViewInit
     }
 
     const options = {
-      root: null,
+      root: this.isHostScrollable() ? this.host.nativeElement : null,
       threshold: 0
     };
 
-    this.observer = new IntersectionObserver(([entry]) => {
-      return entry.isIntersecting && this.scroll.emit();
+    this.observer = new IntersectionObserver((entries) => {
+      const [entry, ] = entries;
+      return entry.isIntersecting && this.scrolled.emit();
     }, options);
-
     this.observer.observe(this.spinner.nativeElement);
   }
 
@@ -54,6 +58,13 @@ export class InfiniteScrollComponent implements OnInit, OnDestroy, AfterViewInit
       return;
     }
     this.observer.disconnect();
+  }
+
+  private isHostScrollable() {
+    const style = window.getComputedStyle(this.element);
+
+    return style.getPropertyValue('overflow') === 'auto' ||
+      style.getPropertyValue('overflow-y') === 'scroll';
   }
 
   ngOnDestroy() {

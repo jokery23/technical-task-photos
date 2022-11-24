@@ -56,7 +56,6 @@ export class PhotoFavoriteService {
   private save(photos: PhotoInterface[]) : void {
     this.favorites$.next(photos);
     this.getStorage().setItem(this.KEY_TOKEN, JSON.stringify(photos));
-    console.log('after saving - favorites:', this.favorites$.getValue().length);
   }
 
   private restoreFromStorage(): void {
